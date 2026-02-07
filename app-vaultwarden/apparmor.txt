@@ -26,6 +26,7 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
   /tmp/** rwk,
 
   # Access to app configuration
+  /data/ r,
   /data/options.json rw,
 
   # Start new profile for Vaultwarden service
@@ -44,7 +45,7 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
     capability net_bind_service,
 
     # Vaultwarden binary and web vault
-    /opt/vaultwarden r,
+    /opt/vaultwarden rm,
     /opt/web-vault/** r,
 
     # Network socket access
@@ -53,29 +54,35 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
 
     # Process access
     /proc/1/fd/1 w,
-    /var/run/vaultwarden.pid rw,
+    /run/vaultwarden.pid wrc,
 
-    # System access
+    # File access
     /bin/bash rix,
     /bin/echo ix,
     /dev/null rw,
     /dev/tty rw,
     /etc/passwd r,
+    /etc/ssl/openssl.cnf r,
+    /etc/ssl/certs/ca-certificates.crt r,
     /dev/urandom r,
     /usr/bin/openssl rix,
 
     # System information
+    /proc/56/cgroup r,
+    /proc/56/mountinfo ri,
     /proc/net/netlink r,
     /proc/sys/kernel/osrelease r,
     /proc/sys/net/core/somaxconn r,
     /proc/sys/net/ipv4/tcp_tw_reuse r,
+    /sys/fs/cgroup/cpu.max r,
 
     # Attachments, configuration, SQLite database access, icon cache & temporary files
+    /data/ r,
     /data/attachments/** rw,
     /data/config.json rw,
-    /data/db.sqlite3 rw,
-    /data/db.sqlite3-shm rw,
-    /data/db.sqlite3-wal rw,
+    /data/db.sqlite3 rwk,
+    /data/db.sqlite3-shm rwk,
+    /data/db.sqlite3-wal rwk,
     /data/icon_cache/** rw,
     /data/rsa_key.pem rw,
     /data/tmp/** rw,
@@ -87,8 +94,16 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
     # Receive signals from S6-Overlay
     signal (receive) peer=*_vaultwarden,
 
+    # Read process trace
+    ptrace (read),
+
+    # Capabilities
+    dac_override,
+    setgid,
+    setuid,
+
     # Nginx binary and configuration
-    /usr/sbin/nginx r,
+    /usr/sbin/nginx rm,
     /etc/nginx/** r,
 
     # Network socket access
@@ -97,12 +112,21 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
 
     # Process access
     /proc/1/fd/1 w,
-    /var/run/nginx.pid rw,
+    /run/nginx.pid wrc,
 
-    # System access
+    # File access
     /bin/bash rix,
     /dev/null rw,
     /dev/tty rw,
+    /etc/group r,
+    /etc/passwd r,
+    /etc/nsswitch.conf r,
+    /etc/ssl/openssl.cnf r,
+    /var/lib/nginx/body/ c,
+    /var/lib/nginx/fastcgi/ c,
+    /var/lib/nginx/proxy/ c,
+    /var/lib/nginx/scgi/ c,
+    /var/lib/nginx/uwsgi/ c,
 
     # System information
     /proc/net/netlink r,
