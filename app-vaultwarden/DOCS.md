@@ -80,8 +80,8 @@ Instead you need to make this app externally accessible via SSL / HTTPS, e.g.
 
 See one of the following step-by-step guides to learn more about these two options:
 
-- [Make Vaultwarden available externally with Nginx Proxy Manager](https://github.com/mariorasch/ha-apps/blob/main/app-vaultwarden/make-available-externally-reverse-proxy.md)
-- [Make Vaultwarden available externally with Cloudflared](https://github.com/mariorasch/ha-apps/blob/main/app-vaultwarden/make-available-externally-cloudflare.md)
+- [Make Vaultwarden available externally with Nginx Proxy Manager](https://github.com/mariorasch/ha-apps/blob/main/app-vaultwarden/docs/make-available-externally-reverse-proxy.md)
+- [Make Vaultwarden available externally with Cloudflared](https://github.com/mariorasch/ha-apps/blob/main/app-vaultwarden/docs/make-available-externally-cloudflare.md)
 
 ## Copying existing Vaultwarden data from your local Mac to Home Assistant app
 

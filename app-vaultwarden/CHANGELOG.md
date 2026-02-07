@@ -1,3 +1,7 @@
+# 1.0.18
+
+Fix documentation links.
+
 # 1.0.17
 
 Update apparmor.txt.
