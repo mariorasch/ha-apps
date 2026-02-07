@@ -68,8 +68,8 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
     /usr/bin/openssl rix,
 
     # System information
-    /proc/56/cgroup r,
-    /proc/56/mountinfo ri,
+    /proc/*/cgroup r,
+    /proc/*/mountinfo ri,
     /proc/net/netlink r,
     /proc/sys/kernel/osrelease r,
     /proc/sys/net/core/somaxconn r,
