@@ -1,7 +1,5 @@
 # Making Vaultwarden available externally using a FRITZ!Box Internet router and a Reverse Proxy
 
----
-
 ## Prerequisites
 
 This documentation is based on the following assumptions:
@@ -9,7 +7,7 @@ This documentation is based on the following assumptions:
 - You have a FRITZ!Box router and a Raspberry Pi with Home Assistant and the Vaultwarden app installed.
 - The Raspberry Pi is reachable at the fixed IPv4 address **192.168.178.100**.
 - The name of your Raspberry Pi in your FRITZ!Box is **RaspberryPi**.
-- The **[Vaultwarden](https://github.com/mariorasch/ha-apps/app-vaultwarden)** app is installed in Home Assistant and running on port is **7277**.
+- The **[Vaultwarden](https://github.com/mariorasch/ha-apps/tree/main/app-vaultwarden)** app is installed in Home Assistant and running on port is **7277**.
 - After this setup, Vaultwarden will be available at **https://raspberrypi.your-subdomain.myfritz.link**.
 
 **Please note** that company proxies / firewalls may block access to the myfritz.link domain. If this is the case and you like to access your Vaultwarden instance from your company network, consider setting up external availability by the use of a Cloudflare Tunnel.
@@ -50,4 +48,4 @@ Using the "Nginx Proxy Manager" user interface -> Hosts -> "Proxy Hosts", add a 
 - **Scheme:** http
 - **Forward Hostname / IP:** 192.168.178.100
 - **Forward Port:** 7277
- - Enable options **Cache Assets**, **Block Common Exploits**, **Websockets Support** and **Force SSL**.
+ - Enable options **Cache Assets**, **Block Common Exploits**, **Websockets Support**, **Force SSL** and **HTTP/2 Support**.

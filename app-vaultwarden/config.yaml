@@ -1,10 +1,10 @@
 ---
 name: Vaultwarden
-version: "1.0.7"
+version: "1.0.8"
 slug: vaultwarden
 description: Open source password management solution based on Vaultwarden
-url: https://github.com/mariorasch/ha-apps/app-vaultwarden
-webui: "[PROTO:ssl]://[HOST]:[PORT:7277]"
+url: https://github.com/mariorasch/ha-apps/tree/main/app-vaultwarden
+webui: "http://[HOST]:[PORT:7277]"
 init: false
 arch:
   - aarch64

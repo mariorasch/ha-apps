@@ -1,3 +1,7 @@
+# 1.0.8
+
+Update apparmor.txt, config.yaml and documentation.
+
 # 1.0.7
 
 Update Dockerfile to install necessary Vaultwarden dependencies.

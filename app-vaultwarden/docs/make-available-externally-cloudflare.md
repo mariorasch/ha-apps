@@ -1,14 +1,12 @@
 # Making Vaultwarden available externally using a Cloudflare Tunnel
 
----
-
 ## Prerequisites
 
 This documentation is based on the following assumptions:
 
 - You have a Raspberry Pi with Home Assistant and the Vaultwarden app installed.
 - You already own a domain **your-domain.com** that is or is not already registered with Cloudflare.
-- The **[Vaultwarden](https://github.com/mariorasch/ha-apps/app-vaultwarden)** app is installed in Home Assistant and running on port is **7277**.
+- The **[Vaultwarden](https://github.com/mariorasch/ha-apps/tree/main/app-vaultwarden)** app is installed in Home Assistant and running on port is **7277**.
 - After this setup, Vaultwarden will be available at **https://vault.your-domain.com**.
 
 ## Setup

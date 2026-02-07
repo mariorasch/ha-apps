@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-profile example flags=(attach_disconnected,mediate_deleted) {
+profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
   #include <abstractions/base>
 
   # Capabilities
@@ -17,6 +17,7 @@ profile example flags=(attach_disconnected,mediate_deleted) {
   /etc/services.d/** rwix,
   /etc/cont-init.d/** rwix,
   /etc/cont-finish.d/** rwix,
+  /etc/s6-overlay/s6-rc.d/** r,
   /run/{,**} rwk,
   /dev/tty rw,
 
@@ -24,34 +25,91 @@ profile example flags=(attach_disconnected,mediate_deleted) {
   /usr/lib/bashio/** ix,
   /tmp/** rwk,
 
-  # Access to options.json and other files within your app
-  /data/** rw,
+  # Access to app configuration
+  /data/options.json rw,
 
-  # Start new profile for service
-  /usr/bin/my_program cx -> my_program,
+  # Start new profile for Vaultwarden service
+  /opt/vaultwarden cx -> vaultwarden_service,
 
-  profile my_program flags=(attach_disconnected,mediate_deleted) {
+  # Start new profile for Nginx service
+  /usr/sbin/nginx cx -> nginx_service,
+
+  profile vaultwarden_service flags=(attach_disconnected,mediate_deleted) {
     #include <abstractions/base>
 
     # Receive signals from S6-Overlay
-    signal (receive) peer=*_example,
+    signal (receive) peer=vaultwarden,
 
-    # Access to options.json and other files within your aoo
-    /data/** rw,
+    # Capabilities
+    capability net_bind_service,
 
-    # Access to mapped volumes specified in config.json
-    /share/** rw,
+    # Vaultwarden binary and web vault
+    /opt/vaultwarden r,
+    /opt/web-vault/** r,
 
-    # Access required for service functionality
-    # Note: List was built by doing the following:
-    # 1. Add what is obviously needed based on what is in the script
-    # 2. Add `complain` as a flag to this profile temporarily and run the app
-    # 3. Review the audit log with `journalctl _TRANSPORT="audit" -g 'apparmor="ALLOWED"'` and add other access as needed
-    # Remember to remove the `complain` flag when you are done
-    /usr/bin/my_program r,
+    # Network socket access
+    network inet stream,
+    network inet dgram,
+
+    # Process access
+    /proc/1/fd/1 w,
+    /var/run/vaultwarden.pid rw,
+
+    # System access
     /bin/bash rix,
     /bin/echo ix,
-    /etc/passwd r,
+    /dev/null rw,
     /dev/tty rw,
+    /etc/passwd r,
+    /dev/urandom r,
+    /usr/bin/openssl rix,
+
+    # System information
+    /proc/net/netlink r,
+    /proc/sys/kernel/osrelease r,
+    /proc/sys/net/core/somaxconn r,
+    /proc/sys/net/ipv4/tcp_tw_reuse r,
+
+    # Attachments, configuration, SQLite database access, icon cache & temporary files
+    /data/attachments/** rw,
+    /data/config.json rw,
+    /data/db.sqlite3 rw,
+    /data/db.sqlite3-shm rw,
+    /data/db.sqlite3-wal rw,
+    /data/icon_cache/** rw,
+    /data/tmp/** rw,
+  }
+
+  profile nginx_service flags=(attach_disconnected,mediate_deleted) {
+    #include <abstractions/base>
+
+    # Receive signals from S6-Overlay
+    signal (receive) peer=vaultwarden,
+
+    # Nginx binary and configuration
+    /usr/sbin/nginx r,
+    /etc/nginx/** r,
+
+    # Network socket access
+    network inet stream,
+    network inet dgram,
+
+    # Process access
+    /proc/1/fd/1 w,
+    /var/run/nginx.pid rw,
+
+    # System access
+    /bin/bash rix,
+    /dev/null rw,
+    /dev/tty rw,
+
+    # System information
+    /proc/net/netlink r,
+    /proc/sys/kernel/osrelease r,
+    /proc/sys/net/core/somaxconn r,
+    /proc/sys/net/ipv4/tcp_tw_reuse r,
+
+    # Temporary files
+    /tmp/** rw,
   }
 }

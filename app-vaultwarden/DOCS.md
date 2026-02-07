@@ -80,20 +80,20 @@ Instead you need to make this app externally accessible via SSL / HTTPS, e.g.
 
 See one of the following step-by-step guides to learn more about these two options:
 
-- [Make Vaultwarden available externally with Nginx Proxy Manager](./docs/make-available-externally-reverse-proxy.md)
-- [Make Vaultwarden available externally with Cloudflared](./docs/make-available-externally-cloudflare.md)
+- [Make Vaultwarden available externally with Nginx Proxy Manager](https://github.com/mariorasch/ha-apps/blob/main/app-vaultwarden/make-available-externally-reverse-proxy.md)
+- [Make Vaultwarden available externally with Cloudflared](https://github.com/mariorasch/ha-apps/blob/main/app-vaultwarden/make-available-externally-cloudflare.md)
 
 ## Copying existing Vaultwarden data from your local Mac to Home Assistant app
 
 In case you already have existing Vaultwarden data that you like to copy over to your Vaultwarden app running in Home Assistant, please have a look at the step-by-step guide:
 
-- [Copying existing Vaultwarden data from your local Mac to Home Assistant app](./docs/copying-existing-vaultwarden-data.md)
+- [Copying existing Vaultwarden data from your local Mac to Home Assistant app](https://github.com/mariorasch/ha-apps/blob/main/app-vaultwarden/docs/copying-existing-vaultwarden-data.md)
 
 ## License
 
 MIT License
 
-Copyright (c) 2019-2025 Franck Nijhof
+Copyright (c) 2026 Mario Rasch
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
