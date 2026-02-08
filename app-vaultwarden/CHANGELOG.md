@@ -1,3 +1,7 @@
+# 1.0.20
+
+Fix directory access for Nginx in AppArmor.
+
 # 1.0.19
 
 Fix System information & file access for Nginx in AppArmor.

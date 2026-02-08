@@ -133,10 +133,15 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
     # Nginx file access
     /data/ r,
     /tmp/** rw,
+    /var/lib/nginx/body/ rw,
     /var/lib/nginx/body/** rw,
+    /var/lib/nginx/fastcgi/ rw,
     /var/lib/nginx/fastcgi/** rw,
+    /var/lib/nginx/proxy/ rw,
     /var/lib/nginx/proxy/** rw,
+    /var/lib/nginx/scgi/ rw,
     /var/lib/nginx/scgi/** rw,
+    /var/lib/nginx/uwsgi/ rw,
     /var/lib/nginx/uwsgi/** rw,
   }
 }
