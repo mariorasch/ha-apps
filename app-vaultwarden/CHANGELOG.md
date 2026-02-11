@@ -1,3 +1,7 @@
+# 1.0.24
+
+- Update apparmor.txt.
+
 # 1.0.23
 
 - Update to [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.35.3.
