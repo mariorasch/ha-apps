@@ -1,15 +1,19 @@
+# 1.0.26
+
+- Update icon & logo.
+
 # 1.0.25
 
-- Update apparmor.txt.
+- Update AppArmor.
 
 # 1.0.24
 
-- Update apparmor.txt.
+- Update AppArmor.
 
 # 1.0.23
 
 - Update to [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.35.3.
-- Update apparmor.txt.
+- Update AppArmor.
 
 # 1.0.22
 
@@ -34,43 +38,43 @@ Fix documentation links.
 
 # 1.0.17
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.16
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.15
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.14
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.13
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.12
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.11
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.10
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.9
 
-Update apparmor.txt.
+Update AppArmor.
 
 # 1.0.8
 
-Update apparmor.txt, config.yaml and documentation.
+Update AppArmor, config.yaml and documentation.
 
 # 1.0.7
 

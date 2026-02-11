@@ -1,6 +1,6 @@
 ---
 name: Vaultwarden
-version: "1.0.25"
+version: "1.0.26"
 slug: vaultwarden
 description: Open source password management solution based on Vaultwarden
 url: https://github.com/mariorasch/ha-apps/tree/main/app-vaultwarden
