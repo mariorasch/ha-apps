@@ -1,3 +1,8 @@
+# 1.0.23
+
+- Update to [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.35.3.
+- Update apparmor.txt.
+
 # 1.0.22
 
 - Allow udp traffic for Vaultwarden in AppArmor.
