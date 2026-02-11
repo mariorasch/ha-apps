@@ -36,7 +36,7 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
   # Start new profile for Nginx service
   /usr/sbin/nginx cx -> nginx_service,
 
-  profile vaultwarden_service flags=(complain,attach_disconnected,mediate_deleted) {
+  profile vaultwarden_service flags=(attach_disconnected,mediate_deleted) {
     #include <abstractions/base>
 
     # Receive signals from S6-Overlay
@@ -91,7 +91,7 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
     /data/tmp/** rw,
   }
 
-  profile nginx_service flags=(complain,attach_disconnected,mediate_deleted) {
+  profile nginx_service flags=(attach_disconnected,mediate_deleted) {
     #include <abstractions/base>
 
     # Receive signals from S6-Overlay

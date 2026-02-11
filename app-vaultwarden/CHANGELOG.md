@@ -1,3 +1,7 @@
+# 1.0.25
+
+- Update apparmor.txt.
+
 # 1.0.24
 
 - Update apparmor.txt.
