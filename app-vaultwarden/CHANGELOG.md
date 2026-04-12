@@ -1,3 +1,7 @@
+# 1.0.32
+
+- Update to [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.35.5.
+
 # 1.0.31
 
 - Update documentation.
