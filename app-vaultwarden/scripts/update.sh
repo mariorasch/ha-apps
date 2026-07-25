@@ -66,7 +66,7 @@ else
 fi
 
 # Optionally build and push a new Docker image
-read -p "Do you want to build and push a new Docker image? (y/n): " BUILD_IMAGE
+read "BUILD_IMAGE?Do you want to build and push a new Docker image? (y/N): "
 
 if [ "$BUILD_IMAGE" = "y" ]; then
     if ! colima status &> /dev/null; then
