@@ -37,7 +37,7 @@ declare NEW_APP_VERSION="${CURRENT_APP_MAJOR}.${CURRENT_APP_MINOR}.${NEW_APP_REV
 # Update Vaultwarden server version
 if [ -f "Dockerfile" ]; then
     sed -i '' "s/FROM \([\"']\)vaultwarden\/server:[^\"']*/FROM \1vaultwarden\/server:$NEW_VAULTWARDEN_VERSION/" Dockerfile
-    sed -i '' "s/ARG BUILD_VERSION=.*/ARG BUILD_VERSION=$NEW_VAULTWARDEN_VERSION/" Dockerfile
+    sed -i '' "s/ARG BUILD_VERSION=.*/ARG BUILD_VERSION=$NEW_APP_VERSION/" Dockerfile
 
     echo "Updated Vaultwarden server version from ${CURRENT_VAULTWARDEN_VERSION} to ${NEW_VAULTWARDEN_VERSION}"
 else
@@ -77,7 +77,7 @@ if [ "$BUILD_IMAGE" = "y" ]; then
         echo "Colima is already running"
     fi
 
-    echo "Building Docker image..."
+    echo "Building Docker image \"app-vaultwarden\"..."
 
     docker buildx build \
         --file Dockerfile \
@@ -87,11 +87,15 @@ if [ "$BUILD_IMAGE" = "y" ]; then
         --tag app-vaultwarden \
         --build-arg BUILD_DATE="$(date -Iseconds)" .
 
-    echo "Tagging Docker image \"app-vaultwarden\" with version ${CURRENT_APP_VERSION}..."
+    echo "Tagging Docker image \"app-vaultwarden\" with version ${NEW_APP_VERSION}..."
 
     docker tag app-vaultwarden $GHCR_PATH:$NEW_APP_VERSION
 
-    echo "Pushing Docker image..."
+    echo "Removing Docker image \"app-vaultwarden:${CURRENT_APP_VERSION}\"..."
+
+    docker rmi $GHCR_PATH:$CURRENT_APP_VERSION
+
+    echo "Pushing Docker image \"app-vaultwarden:${NEW_APP_VERSION}\"..."
 
     docker push $GHCR_PATH:$NEW_APP_VERSION
 
