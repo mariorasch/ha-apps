@@ -1,6 +1,6 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base-debian
 
-FROM "vaultwarden/server:1.37.1" AS vaultwarden
+FROM "vaultwarden/server:1.37.2" AS vaultwarden
 
 FROM ${BUILD_FROM}
 
@@ -33,7 +33,7 @@ ARG BUILD_ARCH=aarch64
 ARG BUILD_REPOSITORY=mariorasch/ha-apps
 ARG BUILD_DATE
 ARG BUILD_REV=1
-ARG BUILD_VERSION=1.0.38
+ARG BUILD_VERSION=1.0.39
 
 LABEL \
     io.hass.name="${BUILD_NAME}" \
