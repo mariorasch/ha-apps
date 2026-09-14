@@ -1,3 +1,7 @@
+# 1.0.40
+
+- Update to [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.37.3
+
 # 1.0.39
 
 - Update to [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.37.2
