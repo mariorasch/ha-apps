@@ -1,3 +1,7 @@
+# 1.0.42
+
+Update AppArmor.
+
 # 1.0.41
 
 - Migrate s6 user bundle to /etc/s6-overlay/user-bundles.d
