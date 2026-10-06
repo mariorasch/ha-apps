@@ -1,3 +1,9 @@
+# 1.0.41
+
+- Migrate s6 user bundle to /etc/s6-overlay/user-bundles.d
+- Remove Colima's Rosetta option from update script
+- Update to [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.37.4
+
 # 1.0.40
 
 - Update to [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 1.37.3

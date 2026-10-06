@@ -72,7 +72,7 @@ if [ "$BUILD_IMAGE" = "y" ]; then
     if ! colima status &> /dev/null; then
         echo "Starting Colima..."
 
-        colima start --arch aarch64 --vm-type=vz --vz-rosetta
+        colima start --arch aarch64 --vm-type=vz
     else
         echo "Colima is already running"
     fi
