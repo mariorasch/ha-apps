@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-profile vaultwarden flags=(complain,attach_disconnected,mediate_deleted) {
+profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
   #include <abstractions/base>
 
   # Capabilities
@@ -12,14 +12,13 @@ profile vaultwarden flags=(complain,attach_disconnected,mediate_deleted) {
   /init ix,
   /bin/** ix,
   /usr/bin/** ix,
-  /run/{s6,s6-rc*,user-bundles*,service}/** ix,
+  /run/{s6,s6-rc*,service}/** ix,
   /package/** ix,
   /command/** ix,
   /etc/services.d/** rwix,
   /etc/cont-init.d/** rwix,
   /etc/cont-finish.d/** rwix,
   /etc/s6-overlay/s6-rc.d/** r,
-  /etc/s6-overlay/user-bundles.d/** r,
   /run/{,**} rwk,
   /dev/tty rw,
 
@@ -37,7 +36,7 @@ profile vaultwarden flags=(complain,attach_disconnected,mediate_deleted) {
   # Start new profile for Nginx service
   /usr/sbin/nginx cx -> nginx_service,
 
-  profile vaultwarden_service flags=(complain,attach_disconnected,mediate_deleted) {
+  profile vaultwarden_service flags=(attach_disconnected,mediate_deleted) {
     #include <abstractions/base>
 
     # Receive signals from S6-Overlay
@@ -92,7 +91,7 @@ profile vaultwarden flags=(complain,attach_disconnected,mediate_deleted) {
     /data/tmp/** rw,
   }
 
-  profile nginx_service flags=(complain,attach_disconnected,mediate_deleted) {
+  profile nginx_service flags=(attach_disconnected,mediate_deleted) {
     #include <abstractions/base>
 
     # Receive signals from S6-Overlay
