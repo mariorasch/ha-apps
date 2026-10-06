@@ -12,7 +12,7 @@ profile vaultwarden flags=(complain,attach_disconnected,mediate_deleted) {
   /init ix,
   /bin/** ix,
   /usr/bin/** ix,
-  /run/{s6,s6-rc*,service}/** ix,
+  /run/{s6,s6-rc*,user-bundles*,service}/** ix,
   /package/** ix,
   /command/** ix,
   /etc/services.d/** rwix,

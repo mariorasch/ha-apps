@@ -1,3 +1,7 @@
+# 1.0.44
+
+Update AppArmor.
+
 # 1.0.43
 
 Update AppArmor.
