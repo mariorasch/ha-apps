@@ -8,9 +8,9 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
   file,
   signal (send) set=(kill,term,int,hup,cont),
 
-  # Unix sockets used by S6-Overlay supervision and service IPC
-  network unix stream,
+  # Network socket access used by S6-Overlay supervision and service IPC
   network unix dgram,
+  network unix stream,
 
   # S6-Overlay
   /init ix,
@@ -57,8 +57,8 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
     # Network socket access
     network inet tcp,
     network inet udp,
-    network unix stream,
     network unix dgram,
+    network unix stream,
 
     # Process access
     /proc/1/fd/1 w,
@@ -118,8 +118,8 @@ profile vaultwarden flags=(attach_disconnected,mediate_deleted) {
 
     # Network socket access
     network inet tcp,
-    network unix stream,
     network unix dgram,
+    network unix stream,
 
     # Process access
     /proc/1/fd/1 w,
